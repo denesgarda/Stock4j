@@ -1,11 +1,11 @@
 import coin.Stock4j.data.Stock;
-import coin.Stock4j.data.statics.Market;
-
-import java.io.FileNotFoundException;
-import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import yahoofinance.YahooFinance;
 
 public class Test {
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println(Arrays.toString(Market.getAllTickers()));
+    public static void main(String[] args) {
+        Stock stock = new Stock("EE");
+        System.out.println(stock.getExchange());
     }
 }

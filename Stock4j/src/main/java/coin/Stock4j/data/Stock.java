@@ -1,6 +1,8 @@
 package coin.Stock4j.data;
 
+import coin.Stock4j.data.statics.ExchangeType;
 import coin.Stock4j.lang.InvalidStockException;
+import coin.Stock4j.lang.StockExchangeNotFoundException;
 import yahoofinance.YahooFinance;
 
 public class Stock {
@@ -69,6 +71,7 @@ public class Stock {
             throw new InvalidStockException(this);
         }
     }
+    @Deprecated(since = "1.0")
     public String getExchange() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
@@ -76,6 +79,30 @@ public class Stock {
         }
         catch(Exception e) {
             throw new InvalidStockException(this);
+        }
+    }
+    public ExchangeType getExchangeType() {
+        String found = "NOT_FOUND";
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            found = stock.getStockExchange();
+            String preExchange = stock.getStockExchange();
+            if(preExchange.equalsIgnoreCase("NasdaqGS")) {
+                return ExchangeType.NASDAQ;
+
+            }
+            else if(preExchange.equalsIgnoreCase("Other OTC")) {
+                return ExchangeType.OTC;
+            }
+            else if(preExchange.equalsIgnoreCase("NYSE")) {
+                return ExchangeType.NYSE;
+            }
+            else {
+                throw new StockExchangeNotFoundException(found);
+            }
+        }
+        catch(Exception e) {
+            throw new StockExchangeNotFoundException(found);
         }
     }
 }
