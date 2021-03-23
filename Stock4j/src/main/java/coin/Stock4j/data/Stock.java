@@ -1,0 +1,81 @@
+package coin.Stock4j.data;
+
+import coin.Stock4j.lang.InvalidStockException;
+import yahoofinance.YahooFinance;
+
+public class Stock {
+    protected String ticker;
+    public Stock(String ticker) {
+        this.ticker = ticker;
+    }
+    public String getTicker() {
+        return ticker;
+    }
+    public Stock setTicker(String ticker) {
+        this.ticker = ticker;
+        return this;
+    }
+    public double getPrice() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return Double.parseDouble(String.valueOf(stock.getQuote().getPrice()));
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this);
+        }
+    }
+    public double getChangeInPercent() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return Double.parseDouble(String.valueOf(stock.getQuote().getChangeInPercent()));
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this);
+        }
+    }
+    public double getChange() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return Double.parseDouble(String.valueOf(stock.getQuote().getChange()));
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this);
+        }
+    }
+    public long getVolume() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getQuote().getVolume();
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this);
+        }
+    }
+    public double getAsk() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return Double.parseDouble(String.valueOf(stock.getQuote().getAsk()));
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this);
+        }
+    }
+    public double getBid() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return Double.parseDouble(String.valueOf(stock.getQuote().getBid()));
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this);
+        }
+    }
+    public String getExchange() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getStockExchange();
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this);
+        }
+    }
+}
