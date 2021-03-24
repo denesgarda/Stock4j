@@ -23,7 +23,8 @@ public class Stock {
             return Double.parseDouble(String.valueOf(stock.getQuote().getPrice()));
         }
         catch(Exception e) {
-            throw new InvalidStockException(this);
+            //throw new InvalidStockException(this);
+            return -1;
         }
     }
     public double getChangeInPercent() {
