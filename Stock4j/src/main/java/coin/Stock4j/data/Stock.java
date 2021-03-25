@@ -5,6 +5,8 @@ import coin.Stock4j.lang.InvalidStockException;
 import coin.Stock4j.lang.ExchangeNotFoundException;
 import yahoofinance.YahooFinance;
 
+import java.io.IOException;
+
 public class Stock {
     protected String ticker;
     public Stock(String ticker) {
@@ -103,6 +105,14 @@ public class Stock {
         }
         catch(Exception e) {
             throw new ExchangeNotFoundException(found);
+        }
+    }
+    public String getName() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getName();
+        } catch (IOException e) {
+            throw new InvalidStockException(this.ticker);
         }
     }
 }
