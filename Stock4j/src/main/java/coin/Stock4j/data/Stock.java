@@ -2,8 +2,10 @@ package coin.Stock4j.data;
 
 import coin.Stock4j.data.statics.ExchangeType;
 import coin.Stock4j.lang.InvalidStockException;
-import coin.Stock4j.lang.StockExchangeNotFoundException;
+import coin.Stock4j.lang.ExchangeNotFoundException;
 import yahoofinance.YahooFinance;
+
+import java.io.IOException;
 
 public class Stock {
     protected String ticker;
@@ -23,7 +25,8 @@ public class Stock {
             return Double.parseDouble(String.valueOf(stock.getQuote().getPrice()));
         }
         catch(Exception e) {
-            throw new InvalidStockException(this);
+            //throw new InvalidStockException(this);
+            return -1;
         }
     }
     public double getChangeInPercent() {
@@ -89,7 +92,6 @@ public class Stock {
             String preExchange = stock.getStockExchange();
             if(preExchange.equalsIgnoreCase("NasdaqGS")) {
                 return ExchangeType.NASDAQ;
-
             }
             else if(preExchange.equalsIgnoreCase("Other OTC")) {
                 return ExchangeType.OTC;
@@ -98,11 +100,19 @@ public class Stock {
                 return ExchangeType.NYSE;
             }
             else {
-                throw new StockExchangeNotFoundException(found);
+                throw new ExchangeNotFoundException(found);
             }
         }
         catch(Exception e) {
-            throw new StockExchangeNotFoundException(found);
+            throw new ExchangeNotFoundException(found);
+        }
+    }
+    public String getName() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getName();
+        } catch (IOException e) {
+            throw new InvalidStockException(this.ticker);
         }
     }
 }

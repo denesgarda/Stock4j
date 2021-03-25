@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Market {
-    public static String[] getAllTickers() throws FileNotFoundException {
+    /*public static String[] getAllTickers() throws FileNotFoundException {
         List<String> allTickers = new ArrayList<>();
         File currentDirectory = new File(new File("").getAbsolutePath());
         String allTickersDirectory = currentDirectory + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "coin" + File.separator + "Stock4j" + File.separator + "data" + File.separator + "statics" + File.separator + "AllTickers.txt";
@@ -53,5 +53,5 @@ public class Market {
         Stock[] array = new Stock[allTickers.size()];
         for(int i = 0; i < allTickers.size(); i++) array[i] = allTickers.get(i);
         return array;
-    }
+    }*/
 }
