@@ -19,8 +19,7 @@ stock.getPrice(); //returns the price
 stock.getVolume(); //returns the volume
 ```
 
-## Accessing the market
-!!! This will come in a future update !!!
+## Accessing the market **(This will come in a future update!)**
 For example, if you want to access all of the stocks on Yahoo Finance to maybe create a scanner, do the following.
 ```java
 Market.getAllTickers(); //returns a string array with the names of all stocks
