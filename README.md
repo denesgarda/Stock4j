@@ -19,8 +19,7 @@ stock.getPrice(); //returns the price
 stock.getVolume(); //returns the volume
 ```
 
-## Accessing the market
-!!! This will come in a future update !!!
+## Accessing the market **(This will come in a future update!)**
 For example, if you want to access all of the stocks on Yahoo Finance to maybe create a scanner, do the following.
 ```java
 Market.getAllTickers(); //returns a string array with the names of all stocks
@@ -31,11 +30,13 @@ Market.getAllStocks(); //returns a stock array with all stocks
 ## Creating a running API
 To create a running API, you have to do the following.
 ```java
-public static void main(String[] args) throws NoSuchMethodException, ClassNotFoundException {
-  API api = new API();
-  api.await("onMarketUpdate", "Test"); //The name of the method you're registering, and the name of the current class
-}
-public void onMarketUpdate(MarketUpdateEvent event) {
-  System.out.println("yay");
+public class Main {
+  public static void main(String[] args) throws NoSuchMethodException, ClassNotFoundException {
+    API api = new API();
+    api.await("onMarketUpdate", "Main"); //The name of the method you're registering, and the name of the current class
+  }
+  public void onMarketUpdate(MarketUpdateEvent event) {
+    //Do something every time the market updates
+  }
 }
 ```
