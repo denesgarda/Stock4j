@@ -3,21 +3,16 @@ package coin.Stock4j.data.statics;
 import coin.Stock4j.lang.ExchangeNotFoundException;
 
 public class ExchangeType {
-    public static ExchangeType NASDAQ;
-    public static ExchangeType OTC;
-    public static ExchangeType NYSE;
-    public static String getExchangeTypeAsString(ExchangeType exchangeType) {
-        if(exchangeType.equals(ExchangeType.NASDAQ)) {
-            return "Nasdaq";
-        }
-        else if(exchangeType.equals(ExchangeType.OTC)) {
-            return "OTC";
-        }
-        else if(exchangeType.equals(ExchangeType.NYSE)) {
-            return "NYSE";
-        }
-        else {
-            throw new ExchangeNotFoundException("NOT_FOUND");
-        }
+    public static ExchangeType NASDAQ = new ExchangeType("Nasdaq");
+    public static ExchangeType OTC = new ExchangeType("OTC");
+    public static ExchangeType NYSE = new ExchangeType("NYSE");
+
+    private String name;
+
+    private ExchangeType(String name) {
+        this.name = name;
+    }
+    public String getAsString() {
+        return this.name;
     }
 }

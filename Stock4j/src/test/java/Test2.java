@@ -6,8 +6,8 @@ import java.io.FileNotFoundException;
 
 public class Test2 {
     public static void main(String[] args) throws FileNotFoundException {
-        Stock stock = new Stock("GOOG");
+        Stock stock = new Stock("AMC");
         ExchangeType exchangeType = stock.getExchangeType();
-        System.out.println(ExchangeType.getExchangeTypeAsString(exchangeType));
+        System.out.println(exchangeType.getAsString());
     }
 }
