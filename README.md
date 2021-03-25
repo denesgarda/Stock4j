@@ -31,11 +31,13 @@ Market.getAllStocks(); //returns a stock array with all stocks
 ## Creating a running API
 To create a running API, you have to do the following.
 ```java
-public static void main(String[] args) throws NoSuchMethodException, ClassNotFoundException {
-  API api = new API();
-  api.await("onMarketUpdate", "Test"); //The name of the method you're registering, and the name of the current class
-}
-public void onMarketUpdate(MarketUpdateEvent event) {
-  System.out.println("yay");
+public class Main {
+  public static void main(String[] args) throws NoSuchMethodException, ClassNotFoundException {
+    API api = new API();
+    api.await("onMarketUpdate", "Main"); //The name of the method you're registering, and the name of the current class
+  }
+  public void onMarketUpdate(MarketUpdateEvent event) {
+    //Do something every time the market updates
+  }
 }
 ```
