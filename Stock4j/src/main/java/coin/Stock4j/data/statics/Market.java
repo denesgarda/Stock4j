@@ -3,10 +3,7 @@ package coin.Stock4j.data.statics;
 import coin.Stock4j.data.Stock;
 import coin.Stock4j.util.arrays.Modification;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -16,6 +13,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Market {
+    private static String[] allTickers = {};
     public static String[] getAllTickers() throws IOException {
         /*List<String> allTickers = new ArrayList<>();
         File currentDirectory = new File(new File("").getAbsolutePath());
@@ -30,9 +28,27 @@ public class Market {
         String[] array = new String[allTickers.size()];
         for(int i = 0; i < allTickers.size(); i++) array[i] = allTickers.get(i);
         return array;*/
-        URL url = new URL("https://docs.google.com/document/d/e/2PACX-1vSbFfJIM9ZDLvjixf3y6jxOr9ljUs3tbQPcjz5BeSjLWO-mXioz-FfKP78worGw746HDxHIeK4Gl659/pub");
+        URL url = new URL("https://docs.google.com/document/d/1lYx47_k8d037g02MF5zH0XYmPwawX69_IKG_ql8TB5Q/edit?usp=sharing");
         URLConnection urlConnection = url.openConnection();
-        InputStreamReader inputStreamReader
+        InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        String line = bufferedReader.readLine();
+        while(line != null) {
+            /*if(line.contains("<span class=\"c1\">")) {
+                int index = 0;
+                while(index != 9565) {
+                    int start = line.indexOf("<span class=\"c1\">", index);
+                    int stop = start;
+                    while (line.charAt(stop) != '<') {
+                        stop++;
+                    }
+                    allTickers = Modification.appendElement(allTickers, line.substring(start, stop));
+                    index++;
+                }
+            }*/
+            System.out.println(line);
+            line = bufferedReader.readLine();
+        }
         return allTickers;
     }
     public static int getAllTickersNumber() throws FileNotFoundException {
@@ -49,7 +65,7 @@ public class Market {
         String[] array = new String[allTickers.size()];
         for(int i = 0; i < allTickers.size(); i++) array[i] = allTickers.get(i);
         return array.length;*/
-        return allTickers.length;
+        return 0;
     }
     public static Stock[] getAllStocks() throws FileNotFoundException {
         /*List<Stock> allTickers = new ArrayList<>();
@@ -63,10 +79,10 @@ public class Market {
         Stock[] array = new Stock[allTickers.size()];
         for(int i = 0; i < allTickers.size(); i++) array[i] = allTickers.get(i);
         return array;*/
-        Stock[] stocks = new Stock[]{};
+        /*Stock[] stocks = new Stock[]{};
         for(int i = 0; i < allTickers.length; i++) {
             stocks = Modification.appendElement(stocks, new Stock(allTickers[i]));
-        }
-        return stocks;
+        }*/
+        return null;
     }
 }
