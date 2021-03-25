@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="Stock4j:jar">
-    <output-path>$PROJECT_DIR$/../Builds/1.0</output-path>
+    <output-path>$PROJECT_DIR$/../Builds/1.1</output-path>
     <root id="archive" name="Stock4j.jar">
       <element id="module-output" name="Stock4j" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/yahoofinance-api/YahooFinanceAPI/3.15.0/YahooFinanceAPI-3.15.0.jar" path-in-jar="/" />
