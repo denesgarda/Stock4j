@@ -19,7 +19,7 @@ stock.getPrice(); //returns the price
 stock.getVolume(); //returns the volume
 ```
 
-## Accessing the market **(This will come in a future update!)**
+## Accessing the market
 For example, if you want to access all of the stocks on Yahoo Finance to maybe create a scanner, do the following.
 ```java
 Market.getAllTickers(); //returns a string array with the names of all stocks
@@ -38,5 +38,33 @@ public class Main {
   public void onMarketUpdate(MarketUpdateEvent event) {
     //Do something every time the market updates
   }
+}
+```
+## Creating a scanner
+You can use everything together, to, for example, create a simple scanner.
+```java
+import coin.Stock4j.API.API;
+import coin.Stock4j.API.event.MarketUpdateEvent;
+import coin.Stock4j.data.Stock;
+import coin.Stock4j.data.statics.Market;
+import coin.Stock4j.util.arrays.Modification;
+
+import java.io.IOException;
+
+public class Main {
+    Stock[] qualified  = new Stock[]{}; //These are the stocks that meet the requirements of the scanner
+    
+    public static void main(String[] args) throws IOException, NoSuchMethodException, ClassNotFoundException {
+        API api = new API();
+        api.await("scanner", "Main");
+    }
+    
+    public void scanner(MarketUpdateEvent event) throws IOException {
+        for(Stock stock : Market.getAllStocks()) {
+            if(stock.getPrice() < 15 && stock.getPrice() > 5) {
+                qualified = Modification.appendElement(qualified, stock); //Modification.appendElement() adds the element given in the second parameter to the array in the first parameter and returns the new array
+            }
+        }
+    }
 }
 ```
