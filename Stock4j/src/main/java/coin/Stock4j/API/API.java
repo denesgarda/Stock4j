@@ -29,17 +29,10 @@ public class API {
         };
         timer.scheduleAtFixedRate(timerTask, 0, 60000);
     }
-    public void end(boolean exit) {
-        if(exit) {
-            System.exit(0);
-        }
-        else {
-            try {
-                timerTask.cancel();
-            }
-            catch(Exception e) {
-                throw new APINotFoundException("The API you are trying to end was never started.");
-            }
-        }
+    public void end(int exitCode) {
+        System.exit(exitCode);
+    }
+    public void end() {
+        System.exit(1);
     }
 }
