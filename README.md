@@ -19,7 +19,7 @@ stock.getPrice(); //returns the price
 stock.getVolume(); //returns the volume
 ```
 
-## Accessing the market
+### Accessing the market
 For example, if you want to access all of the stocks on Yahoo Finance to maybe create a scanner, do the following.
 ```java
 Market.getAllTickers(); //returns a string array with the names of all stocks
@@ -27,7 +27,7 @@ Market.getAllTickersNumber(); //returns the number of all stocks
 Market.getAllStocks(); //returns a stock array with all stocks
 ```
 
-## Creating a running API
+### Creating a running API
 To create a running API, you have to do the following.
 ```java
 public class Main {
@@ -40,7 +40,7 @@ public class Main {
   }
 }
 ```
-## Creating a scanner
+### Creating a scanner
 You can use everything together, to, for example, create a simple scanner.
 ```java
 import coin.Stock4j.API.API;
@@ -69,3 +69,29 @@ public class Main {
 }
 ```
 For now, using a scanner is fairly slow, but we are planning to speed it up. We are also planning to add more types of event, rather than just one that updates every minute.
+
+### Events
+There are 4 types of events. There is MarketUpdateEvent(), which is the default. It fires every minute.
+```java
+public void onMarketUpdate(MarketUpdateEvent event) {
+  //Do something every minute
+}
+```
+There is MarketUpdatePerSecondEvent(), which fires every second.
+```java
+public void onMarketUpdate(MarketUpdatePerSecondEvent event) {
+  //Do something every second
+}
+```
+There is MarketUpdatePerTenMinutesEvent(), which fires every 10 minutes.
+```java
+public void onMarketUpdate(MarketUpdatePerTenMinutesEvent event) {
+  //Do something every 10 minutes
+}
+```
+There is MarketUpdatePerHourEvent(), which fires every hour.
+```java
+public void onMarketUpdate(MarketUpdatePerHourEvent event) {
+  //Do something every hour
+}
+```
