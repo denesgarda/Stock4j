@@ -108,10 +108,20 @@ public class Stock {
     public void test() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            System.out.println(stock.getQuote().getChange());
+            System.out.println(stock.getQuote().getAvgVolume());
         }
         catch(Exception e) {
             e.printStackTrace();
+        }
+    }
+    public long getAverageVolume() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getQuote().getAvgVolume();
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this.ticker);
+
         }
     }
 }
