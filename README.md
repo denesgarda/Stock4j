@@ -68,3 +68,4 @@ public class Main {
     }
 }
 ```
+For now, using a scanner is fairly slow, but we are planning to speed it up. We are also planning to add more types of event, rather than just one that updates every minute.
