@@ -93,7 +93,7 @@ public class API {
                                 }
                             }
                         };
-                        timer.scheduleAtFixedRate(timerTask, 0, 600000);
+                        timer.scheduleAtFixedRate(timerTask, 0, 3600000);
                     }
                     catch(Exception e4) {
                         throw new NoSuchEventException("Said event cannot be found.");
