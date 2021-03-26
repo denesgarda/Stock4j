@@ -115,4 +115,13 @@ public class Stock {
             throw new InvalidStockException(this.ticker);
         }
     }
+    public void test() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            System.out.println(stock.getQuote().getChange());
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
