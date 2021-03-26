@@ -38,6 +38,7 @@ public class Market {
         return allTickers.length;
     }
     public static Stock[] getAllStocks() throws IOException {
+        getAllTickers();
         Stock[] allStocks = new Stock[]{};
         for(String ticker : getAllTickers()) {
             allStocks = Modification.appendElement(allStocks, new Stock(ticker));
