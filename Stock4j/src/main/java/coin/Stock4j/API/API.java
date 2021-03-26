@@ -2,6 +2,7 @@ package coin.Stock4j.API;
 
 import coin.Stock4j.API.event.MarketUpdateEvent;
 import coin.Stock4j.lang.APINotFoundException;
+import jdk.jfr.Name;
 
 import java.lang.reflect.Method;
 import java.util.Timer;
@@ -12,6 +13,10 @@ public class API {
     public API() {
 
     }
+    /**
+     * @deprecated
+     * Method will be renamed to start()
+     **/
     public void await(String methodName, String className) throws ClassNotFoundException, NoSuchMethodException {
         Class c = Class.forName(className);
         final Object event = new MarketUpdateEvent();
