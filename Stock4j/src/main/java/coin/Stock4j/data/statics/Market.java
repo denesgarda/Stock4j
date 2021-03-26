@@ -15,74 +15,33 @@ import java.util.Scanner;
 public class Market {
     private static String[] allTickers = {};
     public static String[] getAllTickers() throws IOException {
-        /*List<String> allTickers = new ArrayList<>();
-        File currentDirectory = new File(new File("").getAbsolutePath());
-        String allTickersDirectory = currentDirectory + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "coin" + File.separator + "Stock4j" + File.separator + "data" + File.separator + "statics" + File.separator + "AllTickers.txt";
-        Scanner scanner = new Scanner(new File(allTickersDirectory));
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            if(!(line.contains("^"))) {
-                allTickers.add(line);
-            }
-        }
-        String[] array = new String[allTickers.size()];
-        for(int i = 0; i < allTickers.size(); i++) array[i] = allTickers.get(i);
-        return array;*/
-        URL url = new URL("https://docs.google.com/document/d/1lYx47_k8d037g02MF5zH0XYmPwawX69_IKG_ql8TB5Q/edit?usp=sharing");
+        URL url = new URL("https://github.com/DenDen747/Stock4j/blob/main/Stock4j/src/main/java/coin/Stock4j/data/statics/AllTickers.txt");
         URLConnection urlConnection = url.openConnection();
         InputStreamReader inputStreamReader = new InputStreamReader(urlConnection.getInputStream());
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
         String line = bufferedReader.readLine();
         while(line != null) {
-            /*if(line.contains("<span class=\"c1\">")) {
-                int index = 0;
-                while(index != 9565) {
-                    int start = line.indexOf("<span class=\"c1\">", index);
-                    int stop = start;
-                    while (line.charAt(stop) != '<') {
-                        stop++;
-                    }
-                    allTickers = Modification.appendElement(allTickers, line.substring(start, stop));
-                    index++;
+            if(line.contains("js-file-line\">")) {
+                int start = line.indexOf("js-file-line\">") + 14;
+                int stop = start;
+                while (line.charAt(stop) != '<') {
+                    stop++;
                 }
-            }*/
-            System.out.println(line);
+                allTickers = Modification.appendElement(allTickers, line.substring(start, stop));
+            }
             line = bufferedReader.readLine();
         }
         return allTickers;
     }
-    public static int getAllTickersNumber() throws FileNotFoundException {
-        /*List<String> allTickers = new ArrayList<>();
-        File currentDirectory = new File(new File("").getAbsolutePath());
-        String allTickersDirectory = currentDirectory + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "coin" + File.separator + "Stock4j" + File.separator + "data" + File.separator + "statics" + File.separator + "AllTickers.txt";
-        Scanner scanner = new Scanner(new File(allTickersDirectory));
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            if(!(line.contains("^"))) {
-                allTickers.add(line);
-            }
-        }
-        String[] array = new String[allTickers.size()];
-        for(int i = 0; i < allTickers.size(); i++) array[i] = allTickers.get(i);
-        return array.length;*/
-        return 0;
+    public static int getAllTickersNumber() throws IOException {
+        getAllTickers();
+        return allTickers.length;
     }
-    public static Stock[] getAllStocks() throws FileNotFoundException {
-        /*List<Stock> allTickers = new ArrayList<>();
-        File currentDirectory = new File(new File("").getAbsolutePath());
-        String allTickersDirectory = currentDirectory + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "coin" + File.separator + "Stock4j" + File.separator + "data" + File.separator + "statics" + File.separator + "AllTickers.txt";
-        Scanner scanner = new Scanner(new File(allTickersDirectory));
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            allTickers.add(new Stock(line));
+    public static Stock[] getAllStocks() throws IOException {
+        Stock[] allStocks = new Stock[]{};
+        for(String ticker : getAllTickers()) {
+            allStocks = Modification.appendElement(allStocks, new Stock(ticker));
         }
-        Stock[] array = new Stock[allTickers.size()];
-        for(int i = 0; i < allTickers.size(); i++) array[i] = allTickers.get(i);
-        return array;*/
-        /*Stock[] stocks = new Stock[]{};
-        for(int i = 0; i < allTickers.length; i++) {
-            stocks = Modification.appendElement(stocks, new Stock(allTickers[i]));
-        }*/
-        return null;
+        return allStocks;
     }
 }

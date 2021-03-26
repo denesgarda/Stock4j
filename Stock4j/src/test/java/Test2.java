@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class Test2 {
     public static void main(String[] args) throws IOException {
-        for(int i = 0; i < Market.getAllTickers().length; i++) {
-            System.out.println(Market.getAllTickers()[i]);
+        for(String string : Market.getAllTickers()) {
+            System.out.println(string);
         }
     }
 }
