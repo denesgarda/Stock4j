@@ -11,7 +11,4 @@ public class MarketUpdateEvent extends Event{
     public MarketUpdateEvent() {
         super();
     }
-    public Duration getPeriod() {
-        return Duration.ofMinutes(1);
-    }
 }
