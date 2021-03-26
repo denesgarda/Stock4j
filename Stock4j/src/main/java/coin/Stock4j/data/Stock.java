@@ -29,24 +29,6 @@ public class Stock {
             return -1;
         }
     }
-    public double getChangeInPercent() {
-        try {
-            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return Double.parseDouble(String.valueOf(stock.getQuote().getChangeInPercent()));
-        }
-        catch(Exception e) {
-            throw new InvalidStockException(this);
-        }
-    }
-    public double getChange() {
-        try {
-            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return Double.parseDouble(String.valueOf(stock.getQuote().getChange()));
-        }
-        catch(Exception e) {
-            throw new InvalidStockException(this);
-        }
-    }
     public long getVolume() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
@@ -111,6 +93,14 @@ public class Stock {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
             return stock.getName();
+        } catch (IOException e) {
+            throw new InvalidStockException(this.ticker);
+        }
+    }
+    public Change getChange() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return new Change(Double.parseDouble(String.valueOf(stock.getQuote().getChange())));
         } catch (IOException e) {
             throw new InvalidStockException(this.ticker);
         }
