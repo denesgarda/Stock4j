@@ -1,14 +1,14 @@
-package coin.Stock4j.data;
+package coin.Stock4j.data.change;
 
-public class Change {
+public class ChangeAmount {
     protected double amount;
-    public Change() {
+    public ChangeAmount() {
 
     }
-    public Change(double amount) {
+    public ChangeAmount(double amount) {
         this.amount = amount;
     }
-    public Change setAmount(double amount) {
+    public ChangeAmount setAmount(double amount) {
         this.amount = amount;
         return this;
     }
