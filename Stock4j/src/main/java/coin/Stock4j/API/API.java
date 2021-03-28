@@ -17,11 +17,7 @@ public class API {
     public API() {
 
     }
-    /**
-     * @deprecated
-     * Method will be renamed to start()
-     **/
-    public void await(String methodName, String className) throws ClassNotFoundException, NoSuchMethodException {
+    public void start(String methodName, String className) throws ClassNotFoundException, NoSuchMethodException {
         Class c = Class.forName(className);
         final Object marketUpdateEvent = new MarketUpdateEvent();
         final Object marketUpdatePerSecondEvent = new MarketUpdatePerSecondEvent();
