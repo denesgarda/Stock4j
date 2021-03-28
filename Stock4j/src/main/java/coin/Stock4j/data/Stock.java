@@ -1,5 +1,6 @@
 package coin.Stock4j.data;
 
+import coin.Stock4j.data.change.Change;
 import coin.Stock4j.data.change.ChangeAmount;
 import coin.Stock4j.data.statics.ExchangeType;
 import coin.Stock4j.lang.InvalidStockException;
@@ -98,11 +99,11 @@ public class Stock {
             throw new InvalidStockException(this.ticker);
         }
     }
-    public ChangeAmount getChange() {
+    public Change getChange() {
         try {
-            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return new ChangeAmount(Double.parseDouble(String.valueOf(stock.getQuote().getChange())));
-        } catch (IOException e) {
+            Stock stock = new Stock(this.ticker);
+            return new Change(stock);
+        } catch (Exception e) {
             throw new InvalidStockException(this.ticker);
         }
     }
