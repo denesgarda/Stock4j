@@ -12,7 +12,7 @@ public class Change {
     public ChangeAmount getChange() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
-            return new ChangeAmount(Double.parseDouble(String.valueOf(stock.getQuote().getChange())));
+            return new ChangeAmount(stock.getQuote().getChange().doubleValue());
         }
         catch(Exception e) {
             throw new InvalidStockException(this.stock);
@@ -21,7 +21,7 @@ public class Change {
     public ChangeAmount getChangeFromAverage50() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
-            return new ChangeAmount(Double.parseDouble(String.valueOf(stock.getQuote().getChangeFromAvg50())));
+            return new ChangeAmount(stock.getQuote().getChangeFromAvg50().doubleValue());
         }
         catch(Exception e) {
             throw new InvalidStockException(this.stock);
@@ -30,7 +30,7 @@ public class Change {
     public ChangeAmount getChangeFromAverage200() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
-            return new ChangeAmount(Double.parseDouble(String.valueOf(stock.getQuote().getChangeFromAvg200())));
+            return new ChangeAmount(stock.getQuote().getChangeFromAvg200().doubleValue());
         }
         catch(Exception e) {
             throw new InvalidStockException(this.stock);
@@ -39,7 +39,7 @@ public class Change {
     public ChangeAmount getChangeFromYearHigh() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
-            return new ChangeAmount(Double.parseDouble(String.valueOf(stock.getQuote().getChangeFromYearHigh())));
+            return new ChangeAmount(stock.getQuote().getChangeFromYearHigh().doubleValue());
         }
         catch(Exception e) {
             throw new InvalidStockException(this.stock);
@@ -48,7 +48,7 @@ public class Change {
     public ChangeAmount getChangeFromYearLow() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
-            return new ChangeAmount(Double.parseDouble(String.valueOf(stock.getQuote().getChangeFromYearLow())));
+            return new ChangeAmount(stock.getQuote().getChangeFromYearLow().doubleValue());
         }
         catch(Exception e) {
             throw new InvalidStockException(this.stock);
