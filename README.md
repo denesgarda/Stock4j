@@ -2,7 +2,7 @@
 A java stock API built with Yahoo Finance API
 
 ## Getting started
-1. Download the latest release from [here](Builds/1.2.2/Stock4j_1.2.2.jar)
+1. Download the latest release from [here](Builds/1.2.3/Stock4j_1.2.3.jar)
 2. Add it to your java project as a dependency
 
 ## Usage
@@ -12,11 +12,13 @@ To create a stock, you have to provide a name. For example, I'll be using AAPL f
 Stock stock = new Stock("AAPL");
 ```
 ### Accessing stock details
-There are many things you can access. However a lot are missing. If you see anything that is not in the API yet, please create an issue.
+There are many things you can access. If you see anything that is not in the API yet, please create an issue.
 ```java
 Stock stock = new Stock("AAPL");
 stock.getPrice(); //returns the price
 stock.getVolume(); //returns the volume
+stock.getChange().getChangeFromYearLow().getAmountInPercent(); //returns the change percent from the year's low
+//etc...
 ```
 
 ### Accessing the market
