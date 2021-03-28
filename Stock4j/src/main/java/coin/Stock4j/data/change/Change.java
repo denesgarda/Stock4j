@@ -11,7 +11,7 @@ public class Change {
     }
     public ChangeAmount getChange() {
         try {
-            yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
+            yahoofinance.Stock stock = YahooFinance.get(this.stock.getTicker());
             return new ChangeAmount(stock.getQuote().getChange().doubleValue());
         }
         catch(Exception e) {
@@ -20,7 +20,7 @@ public class Change {
     }
     public ChangeAmount getChangeFromAverage50() {
         try {
-            yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
+            yahoofinance.Stock stock = YahooFinance.get(this.stock.getTicker());
             return new ChangeAmount(stock.getQuote().getChangeFromAvg50().doubleValue());
         }
         catch(Exception e) {
@@ -29,7 +29,7 @@ public class Change {
     }
     public ChangeAmount getChangeFromAverage200() {
         try {
-            yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
+            yahoofinance.Stock stock = YahooFinance.get(this.stock.getTicker());
             return new ChangeAmount(stock.getQuote().getChangeFromAvg200().doubleValue());
         }
         catch(Exception e) {
@@ -38,7 +38,7 @@ public class Change {
     }
     public ChangeAmount getChangeFromYearHigh() {
         try {
-            yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
+            yahoofinance.Stock stock = YahooFinance.get(this.stock.getTicker());
             return new ChangeAmount(stock.getQuote().getChangeFromYearHigh().doubleValue());
         }
         catch(Exception e) {
@@ -47,7 +47,7 @@ public class Change {
     }
     public ChangeAmount getChangeFromYearLow() {
         try {
-            yahoofinance.Stock stock = YahooFinance.get(this.stock.getName());
+            yahoofinance.Stock stock = YahooFinance.get(this.stock.getTicker());
             return new ChangeAmount(stock.getQuote().getChangeFromYearLow().doubleValue());
         }
         catch(Exception e) {
