@@ -1,7 +1,6 @@
 package coin.Stock4j.util.arrays;
 
 import java.util.Arrays;
-import java.util.function.Supplier;
 
 public class Modification {
 
