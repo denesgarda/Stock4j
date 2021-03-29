@@ -1,7 +1,6 @@
 package coin.Stock4j.data;
 
 import coin.Stock4j.data.change.Change;
-import coin.Stock4j.data.change.ChangeAmount;
 import coin.Stock4j.data.statics.ExchangeType;
 import coin.Stock4j.lang.InvalidStockException;
 import coin.Stock4j.lang.ExchangeNotFoundException;
@@ -113,7 +112,7 @@ public class Stock {
             System.out.println(stock.getQuote().getAvgVolume());
         }
         catch(Exception e) {
-            e.printStackTrace();
+            throw new InvalidStockException(this.ticker);
         }
     }
     public long getAverageVolume() {
@@ -123,7 +122,14 @@ public class Stock {
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
-
+        }
+    }
+    public Dividend getDividend() {
+        try {
+            return new Dividend(this.ticker);
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this.ticker);
         }
     }
 }

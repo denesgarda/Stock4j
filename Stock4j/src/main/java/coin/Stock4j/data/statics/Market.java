@@ -4,13 +4,8 @@ import coin.Stock4j.data.Stock;
 import coin.Stock4j.util.arrays.Modification;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class Market {
     private static String[] allTickers = {};

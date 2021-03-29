@@ -4,9 +4,7 @@ import coin.Stock4j.API.event.MarketUpdateEvent;
 import coin.Stock4j.API.event.MarketUpdatePerHourEvent;
 import coin.Stock4j.API.event.MarketUpdatePerSecondEvent;
 import coin.Stock4j.API.event.MarketUpdatePerTenMinutesEvent;
-import coin.Stock4j.lang.APINotFoundException;
 import coin.Stock4j.lang.NoSuchEventException;
-import jdk.jfr.Name;
 
 import java.lang.reflect.Method;
 import java.util.Timer;
