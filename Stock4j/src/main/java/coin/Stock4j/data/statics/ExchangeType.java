@@ -1,7 +1,5 @@
 package coin.Stock4j.data.statics;
 
-import coin.Stock4j.lang.ExchangeNotFoundException;
-
 public class ExchangeType {
     public static ExchangeType NASDAQ = new ExchangeType("Nasdaq");
     public static ExchangeType OTC = new ExchangeType("OTC");
