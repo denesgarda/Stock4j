@@ -2,7 +2,7 @@
 A java stock API built with Yahoo Finance API
 
 ## Getting started
-1. Download the latest release from [here](Builds/1.2.3/Stock4j_1.2.3.jar)
+1. Download the latest release from [here](Builds/1.2.4/Stock4j_1.2.4.jar)
 2. Add it to your java project as a dependency
 
 ## Usage
