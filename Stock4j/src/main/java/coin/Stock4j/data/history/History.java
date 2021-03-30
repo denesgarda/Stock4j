@@ -40,7 +40,7 @@ public class History {
     public double getClose() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory().get(index).getClose().doubleValue();
+            return stock.getHistory(this.calendar).get(index).getClose().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
@@ -49,7 +49,43 @@ public class History {
     public double getOpen() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory().get(index).getOpen().doubleValue();
+            return stock.getHistory(this.calendar).get(index).getOpen().doubleValue();
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this.ticker);
+        }
+    }
+    public double getAdjClose() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getHistory(this.calendar).get(index).getAdjClose().doubleValue();
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this.ticker);
+        }
+    }
+    public double getHigh() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getHistory(this.calendar).get(index).getHigh().doubleValue();
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this.ticker);
+        }
+    }
+    public double getLow() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getHistory(this.calendar).get(index).getLow().doubleValue();
+        }
+        catch(Exception e) {
+            throw new InvalidStockException(this.ticker);
+        }
+    }
+    public double getVolume() {
+        try {
+            yahoofinance.Stock stock = YahooFinance.get(this.ticker);
+            return stock.getHistory(this.calendar).get(index).getLow().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
