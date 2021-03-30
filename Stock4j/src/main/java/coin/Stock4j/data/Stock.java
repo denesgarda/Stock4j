@@ -1,12 +1,14 @@
 package coin.Stock4j.data;
 
 import coin.Stock4j.data.change.Change;
+import coin.Stock4j.data.history.History;
 import coin.Stock4j.data.statics.ExchangeType;
 import coin.Stock4j.lang.InvalidStockException;
 import coin.Stock4j.lang.ExchangeNotFoundException;
 import yahoofinance.YahooFinance;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 public class Stock {
     protected String ticker;
@@ -131,5 +133,11 @@ public class Stock {
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
         }
+    }
+    public History getHistory(Calendar calendar) {
+        return new History(this.ticker, calendar);
+    }
+    public History getHistory(Calendar calendar, int index) {
+        return new History(this.ticker, calendar, index);
     }
 }
