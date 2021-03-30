@@ -1,6 +1,7 @@
 package coin.Stock4j.data;
 
 import coin.Stock4j.data.change.Change;
+import coin.Stock4j.data.history.HistoricRange;
 import coin.Stock4j.data.history.History;
 import coin.Stock4j.data.statics.ExchangeType;
 import coin.Stock4j.lang.InvalidStockException;
@@ -28,8 +29,7 @@ public class Stock {
             return Double.parseDouble(String.valueOf(stock.getQuote().getPrice()));
         }
         catch(Exception e) {
-            //throw new InvalidStockException(this);
-            return -1;
+            throw new InvalidStockException(this);
         }
     }
     public long getVolume() {
@@ -139,5 +139,11 @@ public class Stock {
     }
     public History getHistory(Calendar calendar, int index) {
         return new History(this.ticker, calendar, index);
+    }
+    public HistoricRange getHistoricRange(Calendar from, Calendar to) {
+        return new HistoricRange(this.ticker, from, to);
+    }
+    public HistoricRange getHistoricRange(Calendar from, Calendar to, int index) {
+        return new HistoricRange(this.ticker, from, to, index);
     }
 }

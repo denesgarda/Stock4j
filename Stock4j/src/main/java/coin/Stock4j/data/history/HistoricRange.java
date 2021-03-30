@@ -4,42 +4,29 @@ import coin.Stock4j.lang.InvalidStockException;
 import yahoofinance.YahooFinance;
 
 import java.util.Calendar;
+import java.util.Date;
 
-public class History {
+public class HistoricRange {
     private String ticker;
-    private Calendar calendar;
+    private Calendar from;
+    private Calendar to;
     private int index;
-    public History() {
-
-    }
-    public History(String ticker, Calendar calendar) {
+    public HistoricRange(String ticker, Calendar from, Calendar to) {
         this.ticker = ticker;
-        this.calendar = calendar;
+        this.from = from;
+        this.to = to;
         this.index = 0;
     }
-    public History(String ticker, Calendar calendar, int index) {
+    public HistoricRange(String ticker, Calendar from, Calendar to, int index) {
         this.ticker = ticker;
-        this.calendar = calendar;
+        this.from = from;
+        this.to = to;
         this.index = index;
-    }
-    public String getTicker() {
-        return this.ticker;
-    }
-    public Calendar getCalendar() {
-        return this.calendar;
-    }
-    public History setTicker(String ticker) {
-        this.ticker = ticker;
-        return this;
-    }
-    public History setCalendar(Calendar calendar) {
-        this.calendar = calendar;
-        return this;
     }
     public double getClose() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory(this.calendar).get(index).getClose().doubleValue();
+            return stock.getHistory(this.from, this.to).get(this.index).getClose().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
@@ -48,7 +35,7 @@ public class History {
     public double getOpen() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory(this.calendar).get(index).getOpen().doubleValue();
+            return stock.getHistory(this.from, this.to).get(this.index).getOpen().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
@@ -57,7 +44,7 @@ public class History {
     public double getAdjClose() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory(this.calendar).get(index).getAdjClose().doubleValue();
+            return stock.getHistory(this.from, this.to).get(this.index).getAdjClose().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
@@ -66,7 +53,7 @@ public class History {
     public double getHigh() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory(this.calendar).get(index).getHigh().doubleValue();
+            return stock.getHistory(this.from, this.to).get(this.index).getHigh().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
@@ -75,7 +62,7 @@ public class History {
     public double getLow() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory(this.calendar).get(index).getLow().doubleValue();
+            return stock.getHistory(this.from, this.to).get(this.index).getLow().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
@@ -84,7 +71,7 @@ public class History {
     public double getVolume() {
         try {
             yahoofinance.Stock stock = YahooFinance.get(this.ticker);
-            return stock.getHistory(this.calendar).get(index).getLow().doubleValue();
+            return stock.getHistory(this.from, this.to).get(this.index).getVolume().doubleValue();
         }
         catch(Exception e) {
             throw new InvalidStockException(this.ticker);
