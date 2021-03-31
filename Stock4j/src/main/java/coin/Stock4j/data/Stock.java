@@ -1,6 +1,7 @@
 package coin.Stock4j.data;
 
 import coin.Stock4j.data.change.Change;
+import coin.Stock4j.data.history.DividendHistory;
 import coin.Stock4j.data.history.HistoricRange;
 import coin.Stock4j.data.history.History;
 import coin.Stock4j.data.statics.ExchangeType;
@@ -145,5 +146,11 @@ public class Stock {
     }
     public HistoricRange getHistoricRange(Calendar from, Calendar to, int index) {
         return new HistoricRange(this.ticker, from, to, index);
+    }
+    public DividendHistory getDividendHistory(Calendar calendar) {
+        return new DividendHistory(this.ticker, calendar);
+    }
+    public DividendHistory getDividendHistory(Calendar calendar, int index) {
+        return new DividendHistory(this.ticker, calendar, index);
     }
 }
