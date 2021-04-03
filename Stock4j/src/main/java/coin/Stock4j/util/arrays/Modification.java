@@ -3,7 +3,6 @@ package coin.Stock4j.util.arrays;
 import java.util.Arrays;
 
 public class Modification {
-
     public static <T> T[] appendElement(T[] array, T value) {
         T[] result = Arrays.copyOf(array, array.length + 1);
         result[result.length - 1] = value;
